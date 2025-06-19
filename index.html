@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación JIRA - Programa Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            width: 20%; /* Inicia en el 20% para el módulo 1 */
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+
+        .modules-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .module-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background: #3498db;
+            color: white;
+        }
+
+        .module-btn.active {
+            background: #2ecc71;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: none; /* Oculto por defecto */
+        }
+
+        .content-section.active {
+            display: block; /* Visible si tiene la clase active */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* (Se omiten los demás estilos para brevedad, son los mismos que ya tenías) */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Formación JIRA - Programa Completo</h1>
+            <p>Programa formativo profesional en 5 módulos especializados</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="modules-nav">
+            <button class="module-btn active" onclick="showModule('module1')">1. Primeros Pasos</button>
+            <button class="module-btn" onclick="showModule('module2')">2. Proyectos y Tableros</button>
+            <button class="module-btn" onclick="showModule('module3')">3. Elementos y Configuración</button>
+            <button class="module-btn" onclick="showModule('module4')">4. Búsquedas y Filtros</button>
+            <button class="module-btn" onclick="showModule('module5')">5. Informes y Dashboards</button>
+        </div>
+
+        <div id="module1" class="content-section active">
+            <h2 class="section-title">🧭 Módulo 1: Primeros Pasos y Navegación</h2>
+            </div>
+
+        <div id="module2" class="content-section">
+            <h2 class="section-title">🏗️ Módulo 2: Creación de Proyectos y Tableros</h2>
+            </div>
+
+        <div id="module3" class="content-section">
+             <h2 class="section-title">⚙️ Módulo 3: Elementos y Configuración</h2>
+            </div>
+        
+        <div id="module4" class="content-section">
+            <h2 class="section-title">🔍 Módulo 4: Búsquedas y Filtros (JQL)</h2>
+            </div>
+
+        <div id="module5" class="content-section">
+            <h2 class="section-title">📊 Módulo 5: Informes y Dashboards</h2>
+            </div>
+
+    </div> <script>
+        // Función para mostrar un módulo específico y ocultar los demás
+        function showModule(moduleId) {
+            // Ocultar todas las secciones de contenido
+            const contentSections = document.querySelectorAll('.content-section');
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Quitar la clase 'active' de todos los botones de módulo
+            const moduleButtons = document.querySelectorAll('.module-btn');
+            moduleButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Mostrar la sección de contenido seleccionada
+            const activeSection = document.getElementById(moduleId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            // Añadir la clase 'active' al botón presionado
+            const activeButton = document.querySelector(`.module-btn[onclick="showModule('${moduleId}')"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Actualizar la barra de progreso
+            updateProgressBar();
+        }
+
+        // Función para actualizar la barra de progreso
+        function updateProgressBar() {
+            const moduleButtons = document.querySelectorAll('.module-btn');
+            const progressBar = document.getElementById('progressBar');
+            let activeModuleIndex = 0;
+            
+            moduleButtons.forEach((btn, index) => {
+                if (btn.classList.contains('active')) {
+                    activeModuleIndex = index;
+                }
+            });
+            
+            const progressPercentage = ((activeModuleIndex + 1) / moduleButtons.length) * 100;
+            if (progressBar) {
+                progressBar.style.width = progressPercentage + '%';
+            }
+        }
+
+        // (Aquí irían el resto de funciones como selectOption, etc., que están en el código completo anterior)
+
+    </script>
+</body>
+</html>
